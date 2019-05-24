@@ -3,19 +3,19 @@ class Genre
 
   @@all = []
 
-  # Read @@all
-  def self.all
-    @@all
-  end
-
   def initialize(name)
     @name = name
     @@all << self
   end
 
+  # Read @@all
+  def self.all
+    @@all
+  end
+
   # Return array of all songs that belong to artist
   def songs
-    Song.all.select { |song| song.genre.name == @name }
+    Song.all.select { |song| song.genre == self }
   end
 
   # Return array of all artists that own songs

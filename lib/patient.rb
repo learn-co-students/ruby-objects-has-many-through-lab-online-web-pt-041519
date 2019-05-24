@@ -3,16 +3,16 @@ class Patient
 
   @@all = []
 
-  # Read @@all
-  def self.all
-    @@all
-  end
-
   def initialize(name)
     @name = name
     @@all << self
   end
 
+  # Read @@all
+  def self.all
+    @@all
+  end
+  
   # Create new appointment from doctor object and date.
   def new_appointment(doctor, date)
     Appointment.new(date, self, doctor)
@@ -20,7 +20,7 @@ class Patient
 
   # Return array of all appointments that belong to patient
   def appointments
-    Appointment.all.select { |appt| appt.patient.name == @name }
+    Appointment.all.select { |appt| appt.patient == self }
   end
 
   # Return array of all this patient's appointment doctors
