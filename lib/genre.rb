@@ -1,5 +1,6 @@
+require 'pry'
 class Genre
-  attr_reader :name, :genres
+  attr_reader :name
   @@all = []
 
   def initialize(name)
@@ -18,8 +19,8 @@ class Genre
   end
 
   def artists
-    Artist.all.select do |name|
-      name.genre == self
+    songs.collect do |song|
+      song.artist
     end
   end
 end

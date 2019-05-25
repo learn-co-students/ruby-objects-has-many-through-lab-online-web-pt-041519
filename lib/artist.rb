@@ -1,5 +1,5 @@
 class Artist
-  attr_reader :name, :songs, :genres
+  attr_reader :name
   @@all =[]
 
   def initialize(name)
@@ -16,12 +16,15 @@ class Artist
   end
 
   def songs
-    Song.all.select do |name|
-    name.artist == self
+    Song.all.select do |songname|
+    songname.artist == self
     end
   end
 
   def genres
-    songs.genre
+    #binding.pry
+    songs.collect do|artist|
+      artist.genre
+    end
   end
 end
